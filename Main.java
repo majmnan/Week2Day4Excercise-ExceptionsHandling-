@@ -268,6 +268,8 @@ public class Main {
             } catch (InputMismatchException e){
                 System.out.println("Your input should be a number");
                 in.nextLine();
+            } catch (RuntimeException e){
+                System.out.println(e.getMessage());
             }
 
             System.out.println("--------------------------------------------------------------------------------------------------------\n");
@@ -511,7 +513,8 @@ public class Main {
         //Ask user to enter seconds
         System.out.print("Please enter seconds: ");
         int seconds = in.nextInt();
-
+        if (seconds < 0)
+         throw new RuntimeException("seconds can't be negative");
         //calculate and prints
         int secondsBox = seconds % 60;
         int minutesBox = (seconds / 60) % 60;
